@@ -1,0 +1,84 @@
+@import 'variables';
+@import 'functions';
+
+* {
+    margin: 0;
+    padding: 0; 
+}
+
+body {
+    background: $light-color;
+    color: $dark-color;
+    line-height: 1.5;
+    font-family: $font-stack; 
+    text-align: center;
+}
+header {
+    background: $dark-color;
+    color: set-text-color($dark-color);
+    padding: 1rem; 
+
+}
+
+h1 , p{
+    transition: all 1s ease-in-out;
+}
+
+h1:hover , p:hover{
+    transform: scale(1.1);
+}
+
+.section {
+    padding: 3rem; 
+    h1{
+        font-size: 3rem;
+    }
+    &-a {
+      background: $primary-color;
+      color: set-text-color($primary-color); 
+    }
+    &-b {
+      background: $secondary-color;
+      color: set-text-color($secondary-color); 
+    }
+}
+a {
+    color: #333; 
+    &:hover {
+        color: #fff;
+        font-weight: 900;
+     }
+    }
+%btn-shared{
+    margin-top: 1rem;
+    padding: 0.7rem 2rem;
+    text-decoration: none;
+    display: inline-block;
+    cursor: default;    
+}
+
+.btn {
+     &-light{
+        @extend %btn-shared; 
+        background: $light-color;
+        color: set-text-color($light-color); 
+        transition: all 1s ease-in-out;
+    &:hover{
+        @include transform (rotate(360deg));
+        background-color: darken($secondary-color , 10%);
+        border-radius: 50px;
+      }
+    }
+    
+    &-dark {
+        @extend %btn-shared; 
+        background: $dark-color;
+        color: set-text-color($dark-color);
+        transition: all 1s ease-in-out; 
+    &:hover{
+         @include transform (rotate(-360deg));
+        background-color: lighten($primary-color , 10%); 
+        border-radius: 50px;
+        }
+    }
+}
